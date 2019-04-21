@@ -3,6 +3,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=0.7, maximum-scale=0.7, user-scalable=no">
   <title>Snake Game:</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   <style>
   html, body {
     height: 100%;
@@ -29,6 +30,7 @@ var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
 
 var fps = 10;
+var snakeLength = 10;
 var speed = 60 / fps;
 var grid = 16;
 var snake = {
@@ -37,7 +39,7 @@ var snake = {
   dx: grid,
   dy: 0,
   cells: [],
-  maxCells: 4
+  maxCells: snakeLength
 };
 var count = 0;
 var apple = {
@@ -114,11 +116,11 @@ function loop() {
       
       // collision. reset game
       if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
-        alert('Game Over!')
+        Swal.fire("Score: "+snake.maxCells, "Better luck next time!", "error");
         snake.x = 160;
         snake.y = 160;
         snake.cells = [];
-        snake.maxCells = 4;
+        snake.maxCells = snakeLength;
         snake.dx = grid;
         snake.dy = 0;
 
