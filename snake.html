@@ -220,12 +220,12 @@ requestAnimationFrame(loop);
   $(document.body).ready(function () {
       var mask = new ax5.ui.mask();
       mask.open({
-        content: '<img src="swipe-up.png" style="filter: invert(100%);"/><h1>Swipe!</h1><button id="mask-close" style="color:black; padding:1rem 3rem;">Ok</button>'
+        content: '<img src="swipe-up.png" style="filter: invert(100%);"/><h1>Swipe!</h1>'
       });
 
-      $('#mask-close').click(function () {
+      $('.ax-mask-content').on({ 'touchstart' : function(){
         mask.close()
-        });
+      } })
     });
 </script>
 </body>
