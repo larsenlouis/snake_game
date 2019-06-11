@@ -41,6 +41,8 @@
 <canvas width="400" height="400" id="game"></canvas>
 <p>Based on Nokia Snake</p>
 <script>
+const img = new Image();
+img.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAC1lBMVEXddB7VXRNdSDtcRjpOOzNUPDJdrl9eql5dqV1brV9ZODNNLS3///////7//vz//////////fr++fD+9u/+/Pr//////vz///7//////v398dz60pH4vl73s0T3rDfzjCz0kDb1oFP4von96tj//v3//////vz6zIH2pB/1nxP1oRj2pB32oR7yfhLxeQ7xdwnxdATyexD3tHj//fv5zor0mgv1pSb1pij1pSb1pib1oiTxgBjxfRfxfhnxfxrxfhjvbgD3uIH9+vX6szj6rCH6rif6rSX6rSX6riX6qiT3hhf1gxf2gxf2gxf2hBn3gRL3jSr9+PPomlPdbhTfdiDfdR7fdR7fdR7YWhDXWxHWWxLYXBPRUwjeg0nZ1tNoRUBhNC5jPDRiODJiNzFkOzNfNzFaLii8MwuBLhuGLxrDNApZKiRWOjnW0tCplpNQNClfTT9ZODJcRTlZODJiKiJhOSx6KxtRQThCJyCgjY25yLNanlddsmFlh1ZfpV1lhlZZgFRapF1XgVVdsmFYnFa2xbFhvGlJlEdMfkFNrlRMjEZLgkJOr1RLhkNJhEJPr1RHfz9JiURPrlNHej5HkkZivWmVnYZONCdeOTdVRDRZOzRbODRVRTVIOC1MKyxLLixIOC1PLC8/Jx+Ol4HYztBoUURkTjpmRzhlTDplTDpmRjdkTjtZRTJYQDBYRDFYQzFZQTFXRC9bRTrTys3//v7xx2Ttvzjx4Fnvzkrw0Uzy5Vvtvz/ooCfonybonybonybooCjnmx3tsFL//f799+z4qCv5phz/9Fr7yDn7tSr/2ET4oR31exD1eBD1eRD1eRD1eRH1dgv1giD98+r/+/X3tkv2qi372VX4wUP1pi/1qTH2qTLyiifyhybyhybyhybyiCfyhCD0lT/++fT++fD+9un+8+j+9On+9+v+9+v+9ur+8+n+8un+8+n+8+n+8+n+8uj+9u+qzD/hAAAADHRSTlP///////////////8/3SFDAAAAAWJLR0QMgbNRYwAAAAd0SU1FB+MGChY7DeZRmg8AAAEbSURBVBjTARAB7/4ADA0ODA8QERITFAwVDBYXDAAYGQwaGxwdHh8gISIjDCQlAAwmJygpKissLS4vMDEyMwwADDQ1Njc4OTo7PD0+P0BBDABCQ0RFRkdISUpLTE1OT1BRAAxSU1RVVlcAAVhZWltcXQwAXl9gYWJjZGVmZ2hpamtsbQBub3BxcgJzAwR0BXV2d3h5AHp7fH1+Bn8HCIAJgYKDhIUAhoeIiYqLjI2Oj5CRkpOUlQCWl5iZmpucCgudnp+goaKjAKSlpqeoqaqrrK2ur7CxsrMAtLW2t7i5uru8vb6/wMHCwwDExcbHyMnKy8zNzs/Q0dLTANTV1tfY2drb3N3e3+Dh4uMADOTl5ufo6err7O3u7/DxDAwFcpIfg00pAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE5LTA2LTEwVDIyOjU5OjEzLTA3OjAwdNTqlgAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxOS0wNi0xMFQyMjo1OToxMy0wNzowMAWJUioAAAAASUVORK5CYII=';
 // https://www.cookinglight.com/healthy-living/100-healthy-tips
 var healthTips = ["Distance Yourself From the Craving",
 "Plan Your Meals",
@@ -119,7 +121,8 @@ function loop() {
   }
 
   // draw apple
-  context.fillStyle = 'red';
+  var pattern = context.createPattern(img, 'repeat');
+  context.fillStyle = pattern;
   context.fillRect(apple.x, apple.y, grid-1, grid-1);
 
   // draw snake
